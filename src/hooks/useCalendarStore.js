@@ -1,7 +1,7 @@
 // encargado de las interacciones con el store
 
 import { useDispatch, useSelector } from 'react-redux';
-import { onAddNewEvent, onSetActiveEvent } from '../store';
+import { onAddNewEvent, onSetActiveEvent, onUpdateEvent } from '../store';
 
 export const useCalendarStore = () => {
 
@@ -21,6 +21,7 @@ export const useCalendarStore = () => {
       // 200
       if ( calendarEvent._id ) {
         // actualiza
+        dispatch( onUpdateEvent( {...calendarEvent} ) );
       } else {
         dispatch( onAddNewEvent({ ...calendarEvent, _id: new Date().getTime() }) )
       }
